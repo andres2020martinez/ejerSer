@@ -2,14 +2,41 @@
 <html lang="en">
   <head>
     <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
     <title>My movies - {% block title %}{% endblock %}</title>
-    <link rel="stylesheet" href="/static/mymovies.css"/>
+    <link rel="stylesheet"
+          href="{{ url_for('static',filename='css/bulma.css') }}"/>
+    <!--<link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.1/css/bulma.min.css"/>-->
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='mymovies.css') }}"/>
   </head>
   <body>
-    {% block content %}{% endblock %}
+    <header>
+      <nav class="navbar" aria-label="main navigation">
+        <div class="navbar-brand">
+          <span class="navbar-item">
+            <a class="button is-link" href="{{ url_for('home_page') }}">Home</a>
+          </span>
+          <span class="navbar-item">
+            <a class="button is-link" href="{{ url_for('movies_page') }}">List movies</a>
+          </span>
+        </div>
+      </nav>
+    </header>
 
-    <footer>
-      <small>&copy; 2015-2018, Kilgore Trout</small>
+    <main>
+      <section class="section">
+        <div class="content">
+          {% block content %}{% endblock %}
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="content">
+        <small>&copy; 2015-2018, Kilgore Trout</small>
+      </div>
     </footer>
   </body>
 </html>
